@@ -3,14 +3,16 @@
 
 /*  EXERCISE 1
     TODO: Declare a new function type for the sortDescending and sortAscending functions. */
-    
+    interface Sort {
+        (a : number, b : number) : number
+    }
 
 /*  TODO: Convert the sortDescending and sortAscending functions to arrow 
     functions. */
 
 /*  sortDescending is a comparison function that tells the sort method how to sort 
     numbers in descending order */
-function sortDescending(a, b) {
+const sortDescending : Sort = function(a, b) {
 if (a > b) {
     return -1;
 } else if (b > a) {
@@ -22,7 +24,7 @@ if (a > b) {
 
 /*  sortDescending is a comparison function that tells the sort method how to sort 
     numbers in ascending order. */
-function sortAscending(a, b) {
+const sortAscending : Sort  = function sortAscending(a, b) {
 if (a > b) {
     return 1;
 } else if (b > a) {
@@ -38,7 +40,8 @@ if (a > b) {
 
 /*  TODO: Update the BuildArray function. */
 
-function buildArray(items, sortOrder) {
+
+function buildArray(items : number, sortOrder : string) : number[] {
     let randomNumbers = [];
     let nextNumber;
     for (let counter = 0; counter < items; counter++) {
@@ -62,9 +65,14 @@ let myArray2 = buildArray(8, 'descending');
 /*  EXERCISE 2
     TODO: Update the LoanCalculator function. */
 
-function loanCalculator (principle, interestRate, months) {
+
+
+function loanCalculator (principle : number, interestRate : number, months = 12) : string {
     let interest = interestRate / 1200;   // Calculates the monthly interest rate
     let payment;
     payment = principle * interest / (1 - (Math.pow(1/(1 + interest), months)));
     return payment.toFixed(2);
 }
+
+let myLoan = loanCalculator(1000, 5);
+console.log(myLoan);
