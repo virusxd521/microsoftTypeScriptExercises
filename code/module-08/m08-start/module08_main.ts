@@ -4,6 +4,27 @@
 /*  TODO Create a the Loans namespace. */
 
 
+
+namespace AllGreetings{
+    export namespace Greetings {
+        export function returnGreeting(greeting : string){
+            console.log(`The message from namespace Greetings is ${greeting}.`);
+        }
+    }
+    
+    export namespace GreetingsWithLength {
+        export function returnGreeting(greeting : string){
+            const greetingLength : number = getLength(greeting);
+            console.log(`The message from namespace GreetingsWithLength is ${greeting}. It is ${greetingLength} characters long.`);
+        }
+        
+        function getLength(message : string) : number{
+            return message.length;
+        }
+    }
+}
+
+
 interface Loan {
     principle: number,
     interestRate: number        //* Interest rate percentage (eg. 14 is 14%)
@@ -41,3 +62,6 @@ let interestOnlyPayment = calculateInterestOnlyLoanPayment({principle: 30000, in
 let conventionalLoanPayment = calculateConventionalLoanPayment({principle: 30000, interestRate: 5, months: 180});
 console.log(interestOnlyPayment);         //* Returns "The interest only loan payment is 125.00" 
 console.log(conventionalLoanPayment);     //* Returns "The conventional loan payment is 237.24"
+
+AllGreetings.Greetings.returnGreeting ("sssss");
+AllGreetings.GreetingsWithLength.returnGreeting('Hola');  // OK
